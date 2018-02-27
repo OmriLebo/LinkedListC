@@ -57,6 +57,17 @@ int removeNodeByIndex(List *list, int index)
     if(index > listLength(list))
         return -1;
 
+    if(getNode(list, index) == NULL)
+        return -1;
+        
+    if(index == 0)
+    {
+        list->head = list->head->next;
+        free(list->head);
+
+        return 0;
+    }
+
     Node *prev = getNode(list, index - 1);
     Node *to_remove = prev->next;
 
